@@ -1,0 +1,84 @@
+{% load static %}<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <title>{% block title %}Shared Calculator{% endblock %}</title>
+            <link href="https://fonts.googleapis.com/css2?family=Farro:wght@700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+            <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div>
+            <a class="navbar-brand" href="{% url 'home' %}">Shared Calculator</a>
+          </div>
+        </nav>
+        <br>
+        <br>
+        <div class= "d-flex justify-content-center">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_subject">Please submit your name before use:</label>
+                <input type="text" class="form-control" id="id_subject" name="subject">
+            </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <div>
+        <div class="container">
+            <fieldset id="container">
+                <form name="calculator">
+
+                    <input id="display" type="text" name="display" readonly>
+                    
+                    <!-- String concatination with button input-->
+                    
+                    <input id="clearButton" class="specialButton" type="button" value="AC" onclick="calculator.display.value = ''">
+                    <input class="button specialButton" type="button" value="% (mod)" onclick="calculator.display.value += ' % '">
+                    <br>
+                    <input class="button digits" type="button" value="7" onclick="calculator.display.value += '7'">
+                    <input class="button digits" type="button" value="8" onclick="calculator.display.value += '8'">
+                    <input class="button digits" type="button" value="9" onclick="calculator.display.value += '9'">
+                    <input class="button operator" type="button" value="/" onclick="calculator.display.value += ' / '">
+                    <br>
+                    <input class="button digits" type="button" value="4" onclick="calculator.display.value += '4'">
+                    <input class="button digits" type="button" value="5" onclick="calculator.display.value += '5'">
+                    <input class="button digits" type="button" value="6" onclick="calculator.display.value += '6'">
+                    <input class="button operator" type="button" value="x" onclick="calculator.display.value += ' * '">
+                    <br>
+                    <input class="button digits" type="button" value="1" onclick="calculator.display.value += '1'">
+                    <input class="button digits" type="button" value="2" onclick="calculator.display.value += '2'">
+                    <input class="button digits" type="button" value="3" onclick="calculator.display.value += '3'">
+                    <input class="button operator" type="button" value="-" onclick="calculator.display.value += ' - '">
+                    <br>
+                    
+                    <input class="button digits" type="button" value="0" onclick="calculator.display.value += '0'">
+                    <input class="button digits" type="button" value="." onclick="calculator.display.value += '.'">
+                    
+                    <!--<input class="button operator" type="button" value="=" onclick="calculator.display.value = eval(calculator.display.value)">-->
+                    
+                    <input id = "updates" class="button operator" type="button" value="=" onclick="updateCalcData()">
+                    <!-- using eval() for simple computations -->
+                    <script>
+                        function updateCalcData(){
+                            calculator.display.value = eval(calculator.display.value)
+                            updateSockets()
+                            // Send the data to db (models) for sockets to be updated
+                        }
+                    </script>
+                    <input class="button operator" type="button" value="+" onclick="calculator.display.value += ' + '">
+
+                    </form>
+                    <br>
+                    <br>
+                     <div class="container">
+                       <br>
+                       {% block content %}{% endblock content %} Feed:
+                     </div>
+                     <p id="Feed"></p>
+                     <!--<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>-->
+                     {% block script %}{% endblock script %}
+            </fieldset>
+        </div>
+    </body>
+</html>

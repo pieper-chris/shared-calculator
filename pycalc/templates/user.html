@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+
+{% block content %}{% endblock content %}
+
+{% block script %}
+  <script>
+      /*var socket = new WebSocket('ws://' + window.location.host + '/users/');*/
+      /*var socket = new WebSocket('ws://' + window.location.host);*/
+ //     var socket = new WebSocket('ws://'+ window.location.host + window.location.pathname);
+      /*socket = websocket.WebSocket();
+      socket.connect('ws://'+ window.location.host+'ws/user/');*/
+   //   socket.onopen = function open() {
+          // console.log('WebSockets connection created.');
+    //      alert('WebSockets connection created.');
+    //  };
+    
+    //socket.send(calculator.display.value)
+    //    socket.send("test")
+     //   if (socket.readyState == WebSocket.OPEN) {
+     //       socket.onopen();
+     //   }
+     
+     // Note that the path doesn't matter for routing; any WebSocket
+     // connection gets bumped over to WebSocket consumers
+     
+     
+     var wsPrefix = 'ws://'
+     // For Production (https vs http)
+     if (window.location.protocol == 'https:'){
+         wsPrefix = 'wss://'
+     }
+     var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
+     socket.onmessage = function(event) {
+         console.log("message", event);
+         document.getElementById("Feed").innerHTML = event;
+     }
+     socket.onopen = function(event) {
+         console.log("open", event);
+     }
+     socket.onerror = function(event) {
+         console.log("error", event);
+     }
+     socket.onclose = function(event) {
+         console.log("close", event);
+     }
+  
+     function updateSockets(){
+         socket.send(JSON.stringify('testing'));
+         // socket.send(JSON.stringify('testing'));
+         /*socket.send({
+             "type": "websocket.send",
+             "text": "Testing"
+         })*/
+     }
+     /* Call onopen directly if socket is already open
+     if (socket.readyState == WebSocket.OPEN) socket.onopen();*/
+  </script>
+{% endblock script %}
