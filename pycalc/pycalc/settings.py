@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'pycalc.wsgi.application'
 ASGI_APPLICATION = "pycalc.routing.application"
 
 
-# This really wrecked the sockets -> don't use unless running redis server
+# Must run redis server in background for this to work
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -89,18 +89,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-'''CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            # "hosts": [("localhost", 6379)],
-            "hosts": [("127.0.0.1", 6379)],
-            "symmetric_encryption_keys": [SECRET_KEY],
-        },
-    },
-}'''
-
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

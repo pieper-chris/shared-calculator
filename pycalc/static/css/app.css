@@ -17,13 +17,9 @@ body {
 }
 
 .nameform {
-    /*align-items: center;
-    align-items: left;*/
-    /*display: flex;
-    justify-content: left;*/
     float: left;
-    width: 53%;
-    padding: 8px;
+    width: 100%;
+    padding-bottom: 1%;
 
   
 }
@@ -65,8 +61,6 @@ body {
 .container {
     align-items: center;
     padding: 8px;
-   
-    
 }
 
 #container {
