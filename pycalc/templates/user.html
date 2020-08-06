@@ -32,7 +32,9 @@
      var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
      socket.onmessage = function(event) {
          console.log("message", event);
-         document.getElementById("Feed").innerHTML = event;
+         data = JSON.parse(event.data);
+         // console.log("asdfasdf", data["text"]["content"]);
+         document.getElementById("Feed").innerHTML = data["text"]["content"];
      }
      socket.onopen = function(event) {
          console.log("open", event);
@@ -44,8 +46,9 @@
          console.log("close", event);
      }
   
-     function updateSockets(){
-         socket.send(JSON.stringify('testing'));
+     function updateSockets(data){
+         
+         socket.send(JSON.stringify(data));
          // socket.send(JSON.stringify('testing'));
          /*socket.send({
              "type": "websocket.send",

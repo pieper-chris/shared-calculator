@@ -10,19 +10,67 @@
     border-bottom: 1px solid rgb(255, 255, 255);
     border-left: 1px solid rgb(255, 255, 255);
 }
-/* Design below inspired by https://codepen.io/AndrewCreech/pen/vFEry */
 
 body {
     background-color: rgb(225, 227, 227);
     font-family: Tahoma;
 }
 
+.nameform {
+    /*align-items: center;
+    align-items: left;*/
+    /*display: flex;
+    justify-content: left;*/
+    float: left;
+    width: 53%;
+    padding: 8px;
+
+  
+}
+
+#nameform {
+    align-self: center;
+    width: 320px;
+    height: 95px;
+    padding: 8px 8px 20px 8px;
+    margin: 20px auto;
+    background-color: rgb(237, 237, 237);
+    border-radius: 4px;
+    border-top: 2px solid rgb(255, 255, 255);
+    border-right: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(193, 193, 193);
+    border-left: 2px solid rgb(193, 193, 193);
+    box-shadow: -3px 3px 7px rgba(0, 0, 0, .6), inset -100px 0px 100px rgba(255, 255, 255, .5);
+}
+
+.submitButton{
+    background-color: rgb(52, 58, 64);
+    color: #FFF;
+    text-shadow: -1px -1px 0px rgb(52, 58, 64);
+    display: inline-block;
+    margin: 2px;
+    width: 90px;
+    height: 38px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    border-top: 2px solid rgb(255, 255, 255);
+    border-right: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
+    border-left: 2px solid rgb(255, 255, 255);
+}
+
+/* Design below inspired by https://codepen.io/AndrewCreech/pen/vFEry */
+
 .container {
     align-items: center;
+    padding: 8px;
+   
+    
 }
 
 #container {
-    width: 320px;
+    width: 314px;
     height: 420px;
     padding: 8px 8px 20px 8px;
     margin: 20px auto;
@@ -105,7 +153,8 @@ body {
 .digits:hover,
 .operator:hover,
 #clearButton:hover,
-.specialButton:hover{
+.specialButton:hover,
+.submitButton:hover{
     color: #181818;
     text-shadow: 1px 1px 0px rgb(255, 255, 255);
     background-color: rgb(225, 227, 227);

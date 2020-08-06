@@ -44,7 +44,8 @@ class UConsumer(JsonWebsocketConsumer):
         async_to_sync(self.channel_layer.group_send)('index',
         {
             "type": "group.message",
-            "content": "hi"
+            # "content": "hi"
+            "content": content
         })
         
     # async def websocket_receive(self, message):

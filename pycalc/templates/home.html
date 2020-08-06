@@ -8,6 +8,7 @@
             <link rel="stylesheet" href="{% static 'css/app.css' %}">
     </head>
     <body>
+    <script> uname = "Anonymous";</script>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div>
             <a class="navbar-brand" href="{% url 'home' %}">Shared Calculator</a>
@@ -15,19 +16,41 @@
         </nav>
         <br>
         <br>
-        <div class= "d-flex justify-content-center">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_subject">Please submit your name before use:</label>
-                <input type="text" class="form-control" id="id_subject" name="subject">
-            </div>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </form>
         <div>
+        <div class="nameform d-flex">
+            <fieldset id="nameform">
+                <form name="name">
+                    <!--<form method="post">-->
+                    {% csrf_token %}
+                    <!--<div class="form-group">
+                        <label for="id_subject">Please submit your name before use:</label>
+                        <input type="text" class="form-control" id="id_subject" name="name">
+                    </div>-->
+                    <div>
+                        <label for="id_subject">Please submit your name before use:</label>
+                    </div>
+                   
+                    <input type="text" id="id_subject" name="id_subject" >
+                   
+                    <input type="button" class = "submitButton" value="Submit" onclick="updateName()">
+                        <script>
+                            function updateName(){
+                                uname = "Anonymous";
+                                if (document.getElementById('id_subject').value.localeCompare("") != 0){
+                                    uname = document.getElementById('id_subject').value;
+                                }
+                                console.log(uname);
+                            }
+                        </script>
+          <!--<button type="submit" class="btn btn-success">Submit</button>-->
+                
+                </form>
+            </fieldset>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <div class="container">
             <fieldset id="container">
-                <form name="calculator">
+                <form name="calculator" method = "post">{% csrf_token %}
 
                     <input id="display" type="text" name="display" readonly>
                     
@@ -57,14 +80,66 @@
                     
                     <!--<input class="button operator" type="button" value="=" onclick="calculator.display.value = eval(calculator.display.value)">-->
                     
-                    <input id = "updates" class="button operator" type="button" value="=" onclick="updateCalcData()">
+                    <!--<input id = "updates" class="button operator" type="button" value="=" onclick="updateCalcData()">-->
+                    <input id = "updates" class="button operator btn btn-primary" type="submit" value="=" onclick="updateCalcData()">
                     <!-- using eval() for simple computations -->
                     <script>
                         function updateCalcData(){
-                            calculator.display.value = eval(calculator.display.value)
-                            updateSockets()
+                            result = uname + ": "
+                            result += calculator.display.value + ' = ' + eval(calculator.display.value);
+                            console.log(result)
+                            //calculator.display.value = eval(calculator.display.value);
+                            //updateSockets();
+                            //return result;
                             // Send the data to db (models) for sockets to be updated
                         }
+                        function check(){
+                            $.ajax({
+                                method: "GET",
+                                url: "/check/",
+                                success: function(res){
+                                    console.log(res);
+                                    updateSockets(res);
+                                },
+                                error: function (response) {
+                                    console.log(response.statusText);
+                                },
+                            });
+                        }
+                     $(document).ready(function(){
+                    
+                        $('#updates').click(function(e){
+                            e.preventDefault();
+                            
+                            $.ajax({
+                                type:'POST',
+                                url:'/user/resultingcalc/',
+                                data:{
+                                    'comp': "newest1",
+                                    'csrfmiddlewaretoken':$( "input[name='csrfmiddlewaretoken']" ).val()
+                                },
+                                dataType: 'json',
+                                //dataType: 'json',
+                                success:function(){
+                                    console.log("success with ajax");
+                                    check();
+                                    
+                                },
+                                error: function (response) {
+                                    console.log(response.statusText);
+                                    check();
+                                /*error: function(xhr, textStatus, error){
+                                    console.log(xhr.statusText);
+                                    /*console.log(xhr.textStatus);
+                                    console.log(xhr.error);
+                                    // alert the error if any error occured
+                                    console.log("Not successful");
+                                    /*console.log(response);
+                                    alert(formatErrorMessage(response));*/
+                                },
+                            });
+                        });
+                     });
                     </script>
                     <input class="button operator" type="button" value="+" onclick="calculator.display.value += ' + '">
 
@@ -79,6 +154,7 @@
                      <!--<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>-->
                      {% block script %}{% endblock script %}
             </fieldset>
+        </div>
         </div>
     </body>
 </html>

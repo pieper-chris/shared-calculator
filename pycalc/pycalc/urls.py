@@ -19,5 +19,7 @@ from django.urls import path
 from calculator import views
 urlpatterns = [
     path('', views.home, name='home'),
+    path('user/resultingcalc/', views.new_calc),
+    path('check/', views.find_objects),
     path('admin/', admin.site.urls),
 ]
