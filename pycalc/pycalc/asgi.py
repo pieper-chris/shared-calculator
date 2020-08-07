@@ -11,7 +11,7 @@ import os
 import django # added
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pycalc.pycalc.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pycalc.settings')
 
 django.setup() # added
 application = get_asgi_application()
