@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'pycalc.wsgi.application'
 
 
 # Channels settings
-ASGI_APPLICATION = "pycalc.pycalc.routing.application"
+ASGI_APPLICATION = "pycalc.routing.application"
 
 
 # Must run redis server in background for this to work
