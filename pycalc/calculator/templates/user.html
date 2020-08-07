@@ -6,7 +6,9 @@
   if (window.location.protocol == 'https:'){
       wsPrefix = 'wss://'
   }
-  var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
+  /*var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);*/
+  // For Heroku below
+  var socket = new WebSocket(wsPrefix + 'shared-global-calculator.herokuapp.com');
   
   socket.onmessage = function(event) {
       console.log("message", event);
