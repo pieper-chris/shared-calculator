@@ -5,3 +5,6 @@ from datetime import datetime
 class Computation(models.Model):
     comp = models.TextField(max_length=30,default=None,blank=True,null=True)
     entered_at = models.DateTimeField(default=datetime.now, blank=True)
+    
+    def __str__(self):
+        return self.comp
