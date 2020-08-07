@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from calculator import views
+from pycalc.calculator import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('user/resultingcalc/', views.new_calc),
