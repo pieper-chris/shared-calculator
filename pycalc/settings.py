@@ -86,13 +86,14 @@ ASGI_APPLICATION = "pycalc.routing.application"
 #"hosts": [("127.0.0.1", 6379)],
 #"hosts": [("redis", 6379)],
 # [os.environ.get('REDISTOGO_URL', 'redis://localhost:6379')]
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
+# redis_host = os.environ.get('REDIS_HOST', 'localhost')
+# [("redis_host", 6379)]
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts":  [("redis_host", 6379)],
+            "hosts": [os.environ.get('REDISTOGO_URL', 'redis://localhost:6379')],
         },
     },
 }
@@ -150,7 +151,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
