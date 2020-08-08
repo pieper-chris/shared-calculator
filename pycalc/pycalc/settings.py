@@ -88,7 +88,7 @@ CHANNEL_LAYERS = {
         "CONFIG": {
             #"hosts": [("127.0.0.1", 6379)],
             #"hosts": [("redis", 6379)],
-            "hosts": [os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379')],
+            "hosts": [os.environ.get('REDISTOGO_URL', 'redis://localhost:6379')],
         },
     },
 }
