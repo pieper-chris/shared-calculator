@@ -22,40 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = removed
-
-#--------------------------------------------------------------------
-# Below is a secret security key script found from:
-# https://blog.milessteele.com/posts/2013-07-07-hiding-djangos-secret-key.html
-#--------------------------------------------------------------------
-# SECRET SECURITY KEY
-import sys
-
-def find_or_create_secret_key():
-    """
-    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
-    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
-    """
-    SECRET_KEY_DIR = os.path.dirname(__file__)
-    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, 'secret_key.py')
-    sys.path.insert(1,SECRET_KEY_DIR)
-
-    if os.path.isfile(SECRET_KEY_FILEPATH):
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
-    else:
-        from django.utils.crypto import get_random_string
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'
-        new_key = get_random_string(50, chars)
-        with open(SECRET_KEY_FILEPATH, 'w') as f:
-            f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
-
-#--------------------------------------------------------------------
+SECRET_KEY = '7w*=g7sapd*qzrq_a-3jexsq-ihk@m9-r=gohy%fv&p-e@@ha%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -74,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'pycalc.calculator',
+    'calculator',
 ]
 
 MIDDLEWARE = [
@@ -115,15 +82,17 @@ ASGI_APPLICATION = "pycalc.routing.application"
 
 
 # Must run redis server in background for this to work
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-3-86-124-151.compute-1.amazonaws.com:8679"],
+            #"hosts": [("127.0.0.1", 6379)],
+            #"hosts": [("redis", 6379)],
+            #"hosts": [os.environ.get('REDISTOGO_URL', 'redis://localhost:6379')],
         },
     },
 }
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
