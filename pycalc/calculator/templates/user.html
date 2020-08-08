@@ -8,9 +8,9 @@
       wsPrefix = 'wss://';
       wsSuffix = ':8443';
   }
-  /*var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);*/
+  var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
   // For Heroku below
-  var socket = new WebSocket(wsPrefix + 'shared-global-calculator.herokuapp.com' + wsSuffix);
+  /*var socket = new WebSocket(wsPrefix + 'shared-global-calculator.herokuapp.com' + wsSuffix);*/
   
   socket.onmessage = function(event) {
       console.log("message", event);
