@@ -82,12 +82,13 @@ ASGI_APPLICATION = "pycalc.routing.application"
 
 
 # Must run redis server in background for this to work
+
+#"hosts": [("127.0.0.1", 6379)],
+#"hosts": [("redis", 6379)],
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            #"hosts": [("127.0.0.1", 6379)],
-            #"hosts": [("redis", 6379)],
             "hosts": [os.environ.get('REDISTOGO_URL', 'redis://localhost:6379')],
         },
     },
