@@ -2,15 +2,10 @@
 {% block script %}
 <script>
   var wsPrefix = 'ws://';
-  var wsSuffix = ':8000';
   // For Production (https vs http)
   if (window.location.protocol == 'https:'){
       wsPrefix = 'wss://';
-      wsSuffix = ':8443';
   }
-  /*var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);*/
-  // For Heroku below
-  /*var socket = new WebSocket(wsPrefix + 'shared-global-calculator.herokuapp.com' + wsSuffix);*/
   var socket = new WebSocket(wsPrefix + 'shared-global-calculator.herokuapp.com');
   
   socket.onmessage = function(event) {
