@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% block script %}
+<script>
+  var wsPrefix = 'ws://'
+  // For Production (https vs http)
+  if (window.location.protocol == 'https:'){
+      wsPrefix = 'wss://'
+  }
+  var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
+  
+  socket.onmessage = function(event) {
+      console.log("message", event);
+      data = JSON.parse(event.data);
+      lst = JSON.parse(data["text"]["content"]["data"]);
+      console.log("length", lst.length);
+      var str="";
+      for (var i = 0; i < lst.length; i++){
+          str += lst[i]["fields"]["comp"] +
+             "<br>"+ "[ Time: " + lst[i]["fields"]["entered_at"] +" ]" + "<br><br>";
+      }
+      document.getElementById("Feed").innerHTML = str;
+  }
+  socket.onopen = function(event) {
+      console.log("open", event);
+      check();
+  }
+  socket.onerror = function(event) {
+      console.log("error", event);
+  }
+  socket.onclose = function(event) {
+      console.log("close", event);
+  }
+  
+  function updateSockets(data){
+      socket.send(JSON.stringify(data));
+  }
+  if (socket.readyState == WebSocket.OPEN) socket.onopen();
+</script>
+{% endblock script %}
