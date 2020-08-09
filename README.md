@@ -1,9 +1,7 @@
 # Shared-Global-Calculator
 Take Home Test from Sezzle, Inc.
 
-```
-View hosted calculator application at https://shared-global-calculator.herokuapp.com/
-```
+View hosted calculator application at (_https://shared-global-calculator.herokuapp.com/_)
 
 ## Background
 
