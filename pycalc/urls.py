@@ -24,4 +24,4 @@ urlpatterns = [
     path('user/resultingcalc/', views.new_calc),
     path('check/', views.find_objects),
     path('admin/', admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
