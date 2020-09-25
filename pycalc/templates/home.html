@@ -72,8 +72,8 @@
             <script>
               function updateCalcData(){
                   result = "Name: " + uname + "<br>"
-                  result += "[ " + calculator.display.value + ' = ' + eval(calculator.display.value) + " ]";
-                  calculator.display.value = eval(calculator.display.value);
+                  result += "[ " + calculator.display.value + ' = ' + eval(calculator.display.value).toFixed(4) + " ]";
+                  calculator.display.value = eval(calculator.display.value).toFixed(4);
               }
               function check(){
                   $.ajax({
