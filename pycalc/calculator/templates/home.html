@@ -71,9 +71,15 @@
             <!-- using eval() for simple computations -->
             <script>
               function updateCalcData(){
+                  /*result = "Name: " + uname + "<br>"
+                  result += "[ " + calculator.display.value + ' = ' + eval(calculator.display.value).toFixed(4) + " ]";
+                  calculator.display.value = eval(calculator.display.value).toFixed(4);*/
                   result = "Name: " + uname + "<br>"
-                  result += "[ " + calculator.display.value + ' = ' + eval(calculator.display.value) + " ]";
-                  calculator.display.value = eval(calculator.display.value);
+                  result += "[ " + calculator.display.value + ' = ';
+                  var new_val = eval(calculator.display.value);
+                  var rounded = new_val.toFixed(4);
+                  result += rounded + " ]";
+                  calculator.display.value = rounded;
               }
               function check(){
                   $.ajax({
