@@ -20,8 +20,8 @@ def new_calc(request):
     if request.method == 'POST':
         compl = request.POST.get('comp')
         user = User.objects.first()
-            t = datetime.now()
-            s = t.strftime("%c %Z")
+        t = datetime.now()
+        s = t.strftime("%c %Z")
         Computation.objects.create(comp = compl, entered_at = s)
     return HttpResponse('')
 
