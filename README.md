@@ -11,7 +11,7 @@ This web application serves as a calculator that logs the 10 most recent calcula
 
 ### Background
 
-This app was created using Django and deployed to Heroku. You may notice the high amount of commits - 122 of them were related to deployment! Since I am new to integrating a Django project to Heroku, it took me a little longer to configure the settings and file structure to meet the requirements of a successful Heroku deployment. A possible solution to the frequent commits would be to perform a ```git rebase``` and ```squash``` the deployment process together. However, I am keeping all commits as they are for the full visibility of my process as you inspect my source code.
+You may notice the high amount of commits - 122 of them were related to deployment! Since I am new to integrating a Django project to Heroku, it took me a little longer to configure the settings and file structure to meet the requirements of a successful Heroku deployment. A possible solution to the frequent commits would be to perform a ```git rebase``` and ```squash``` the deployment process together. However, I am keeping all commits as they are for the full visibility of my process as you inspect my source code.
 
 ### Current Version 1.2
 What's New:
