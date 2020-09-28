@@ -1,7 +1,7 @@
 # Shared-Global-Calculator
 Take Home Test from Sezzle, Inc.
 
-View hosted calculator application at (_https://shared-global-calculator.herokuapp.com/_)
+**View hosted calculator application at (_https://shared-global-calculator.herokuapp.com/_)**
 
 *Please note that this application is using free "[dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours)" provided by Heroku. Therefore, if this calculator application receives no web traffic in a 30-minute period, it will sleep (idle). When sleeping, any user who connects will experience a delayed initial load/start up. In my experience, this delay should not last longer than 8-10 seconds.*
 
@@ -29,9 +29,9 @@ In the meantime, this application should be up and working well. If you have any
 
 ### Documentation
 For any visitors of this page, I am still new to front-end development even after my computer science degree, which is very deeply concerned with theory, mathematics, and back-end development. I still have much to learn, but that's what is exciting! The major pillars of personal inspiration and instruction behind this application's design/deployment are contained within the following links:
-
--https://www.fullstackpython.com/django.html
--https://devcenter.heroku.com/articles/deploying-python
--https://devcenter.heroku.com/articles/getting-started-with-python
-
+```
+- https://www.fullstackpython.com/django.html
+- https://devcenter.heroku.com/articles/deploying-python
+- https://devcenter.heroku.com/articles/getting-started-with-python
+```
 
