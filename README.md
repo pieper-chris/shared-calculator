@@ -29,9 +29,8 @@ In the meantime, this application should be up and working well. If you have any
 
 ### Documentation
 For any visitors of this page, I am still new to front-end development even after my computer science degree, which is very deeply concerned with theory, mathematics, and back-end development. I still have much to learn, but that's what is exciting! The major pillars of personal inspiration and instruction behind this application's design/deployment are contained within the following links:
-```
+
 - https://www.fullstackpython.com/django.html
 - https://devcenter.heroku.com/articles/deploying-python
 - https://devcenter.heroku.com/articles/getting-started-with-python
-```
 
