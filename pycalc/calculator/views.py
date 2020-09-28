@@ -22,7 +22,7 @@ def new_calc(request):
         user = User.objects.first()
         t = datetime.now()
         s = t.strftime("%c %Z")
-        Computation.objects.create(comp = compl, entered_at = "now")
+        Computation.objects.create(comp = compl, entered_at = s)
     return HttpResponse('')
 
 
