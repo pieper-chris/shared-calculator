@@ -79,7 +79,7 @@
                   var new_val = eval(calculator.display.value);
                   
                   // New logic below for undefined eval() input
-                  if (new_val.equals("")){
+                  if (typeof new_val != 'number'){
                       result += "Undefined Input ]";
                       calculator.display.value = "Undefined Input";
                   } else {
