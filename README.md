@@ -3,7 +3,11 @@ Take Home Test from Sezzle, Inc.
 
 **View hosted calculator application at (_https://shared-global-calculator.herokuapp.com/_)**
 
-*Please note that this application is using free "[dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours)" provided by Heroku. Therefore, if this calculator application receives no web traffic in a 30-minute period, it will sleep (idle). When sleeping, any user who connects will experience a delayed initial load/start up. In my experience, this delay should not last longer than 8-10 seconds.*
+Please note the following:
+```
+*-This application is using free "[dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours)" provided by Heroku. Therefore, if this calculator application receives no web traffic in a 30-minute period, it will sleep (idle). When sleeping, any user who connects will experience a delayed initial load/start up. In my experience, this delay should not last longer than 8-10 seconds.*
+*-The internal redis connection may update automatically by Heroku-Redis. When this occurs, the list of "Recent Global Calculations" below the calculator may not load properly or be visible. This is easily fixed after I update the application's settings to match the new Heroku-Redis update. I will do my best to monitor these updates, but cannot guarantee that these fixes will be applied immediately due to the unknown timing of these automatic updates.*
+```
 
 ## About
 
@@ -16,9 +20,14 @@ You may notice the high amount of commits - 122 of them were related to deployme
 ### Current Version 1.2
 What's New:
 ```
--Python 3.8.6 support
--Decimal computations are now rounded to the nearest ten-thousandths place
--Routine internal maintenance (including redis-server location updates)
+-Added error handling for undefined user input.
+```
+
+New in version 1.2
+```
+-Python 3.8.6 support.
+-Decimal computations are now rounded to the nearest ten-thousandths place.
+-Routine internal maintenance (including redis-server location updates).
 ```
 
 ### Future Work
