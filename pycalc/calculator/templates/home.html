@@ -71,22 +71,22 @@
             <!-- using eval() for simple computations -->
             <script>
               function updateCalcData(){
-                  function updateCalcData(){
-                      try{
-                          result = "Name: " + uname + "<br>"
-                          result += "[ " + calculator.display.value + ' = ';
-                          var new_val = eval(calculator.display.value);
-                          console.log(new_val);
-                          // round decimals to nearest 4 places
-                          var rounded = new_val;
-                          if (new_val % 1 != 0){
-                              rounded = new_val.toFixed(4);
-                          }
-                          result += rounded + " ]";
-                          calculator.display.value = rounded;
-                      } catch (e){
-                      alert("Error: Undefined Operation. Please enter a valid mathematical operation. ", e);
-                      }
+                    result = "Name: " + uname + "<br>"
+                    result += "[ " + calculator.display.value + ' = ';
+                    try{
+                        var new_val = eval(calculator.display.value);
+                        console.log(new_val);
+                        // round decimals to nearest 4 places
+                        var rounded = new_val;
+                        if (new_val % 1 != 0){
+                            rounded = new_val.toFixed(4);
+                        }
+                        result += rounded + " ]";
+                        calculator.display.value = rounded;
+                    } catch (e){
+                        result += " Undefined ]";
+                        alert("Error: Undefined Operation. Please enter a valid mathematical operation. ", e);
+                    }
               }
               function check(){
                   $.ajax({
