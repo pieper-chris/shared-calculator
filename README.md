@@ -6,6 +6,7 @@ Take Home Test from Sezzle, Inc.
 Please note the following:
 
 *-This application is using free "[dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours)" provided by Heroku. Therefore, if this calculator application receives no web traffic in a 30-minute period, it will sleep (idle). When sleeping, any user who connects will experience a delayed initial load/start up. In my experience, this delay should not last longer than 8-10 seconds.*
+
 *-The internal redis connection may update automatically by Heroku-Redis. When this occurs, the list of "Recent Global Calculations" below the calculator may not load properly or be visible. This is easily fixed after I update the application's settings to match the new Heroku-Redis update. I will do my best to monitor these updates, but cannot guarantee that these fixes will be applied immediately due to the unknown timing of these automatic updates.*
 
 
