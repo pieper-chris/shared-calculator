@@ -78,13 +78,19 @@
                   result += "[ " + calculator.display.value + ' = ';
                   var new_val = eval(calculator.display.value);
                   
-                  // round decimals to nearest 4 places
-                  var rounded = new_val;
-                  if (new_val % 1 != 0){
-                      rounded = new_val.toFixed(4);
+                  // New logic below for undefined eval() input
+                  if (new_val.equals("")){
+                      result += "Undefined Input ]";
+                      calculator.display.value = "Undefined Input";
+                  } else {
+                      // round decimals to nearest 4 places
+                      var rounded = new_val;
+                      if (new_val % 1 != 0){
+                          rounded = new_val.toFixed(4);
+                      }
+                      result += rounded + " ]";
+                      calculator.display.value = rounded;
                   }
-                  result += rounded + " ]";
-                  calculator.display.value = rounded;
               }
               function check(){
                   $.ajax({
