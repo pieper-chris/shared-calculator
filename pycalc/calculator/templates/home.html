@@ -71,26 +71,22 @@
             <!-- using eval() for simple computations -->
             <script>
               function updateCalcData(){
-                  /*result = "Name: " + uname + "<br>"
-                  result += "[ " + calculator.display.value + ' = ' + eval(calculator.display.value).toFixed(4) + " ]";
-                  calculator.display.value = eval(calculator.display.value).toFixed(4);*/
-                  result = "Name: " + uname + "<br>"
-                  result += "[ " + calculator.display.value + ' = ';
-                  var new_val = eval(calculator.display.value);
-                  
-                  // New logic below for undefined eval() input
-                  if (new_val.length == 0){
-                      result += "Undefined Input ]";
-                      calculator.display.value = "Undefined Input";
-                  } else {
-                      // round decimals to nearest 4 places
-                      var rounded = new_val;
-                      if (new_val % 1 != 0){
-                          rounded = new_val.toFixed(4);
+                  function updateCalcData(){
+                      try{
+                          result = "Name: " + uname + "<br>"
+                          result += "[ " + calculator.display.value + ' = ';
+                          var new_val = eval(calculator.display.value);
+                          console.log(new_val);
+                          // round decimals to nearest 4 places
+                          var rounded = new_val;
+                          if (new_val % 1 != 0){
+                              rounded = new_val.toFixed(4);
+                          }
+                          result += rounded + " ]";
+                          calculator.display.value = rounded;
+                      } catch (e){
+                      alert("Error: Undefined Operation. Please enter a valid mathematical operation. ", e);
                       }
-                      result += rounded + " ]";
-                      calculator.display.value = rounded;
-                  }
               }
               function check(){
                   $.ajax({
