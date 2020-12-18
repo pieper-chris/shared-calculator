@@ -14,6 +14,7 @@ import os
 import redis
 # import django_heroku
 import dj_database_url
+from django.core.management import utils
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,7 +55,8 @@ def find_or_create_secret_key():
         return SECRET_KEY
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = find_or_create_secret_key()
+# SECRET_KEY = find_or_create_secret_key()
+SECRET_KEY = utils.get_random_secret_key()
 
 #--------------------------------------------------------------------
 
