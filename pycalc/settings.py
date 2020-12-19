@@ -32,7 +32,6 @@ env = environ.Env(
 environ.Env.read_env()
 
 
-# Make this unique, and don't share it with anybody.
 SECRET_KEY = utils.get_random_secret_key()
 
 #--------------------------------------------------------------------
@@ -96,18 +95,12 @@ ASGI_APPLICATION = "pycalc.routing.application"
 
 
 # Must run redis server in background for this to work
-# When redis updates, use 'heroku config --app shared-global-calculator | grep REDIS'
+# redis url as heroku env variable
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-3-86-124-151.compute-1.amazonaws.com:8679"],
-                     # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-3-232-63-252.compute-1.amazonaws.com:32009"],
-                     # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-34-194-156-60.compute-1.amazonaws.com:24459"],
-                     # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-184-73-174-176.compute-1.amazonaws.com:16289"],
-                     # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-52-3-150-117.compute-1.amazonaws.com:25819"],
-                     #old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-52-7-225-92.compute-1.amazonaws.com:9829"],
-                     # ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-34-205-13-64.compute-1.amazonaws.com:26309"],
+            "hosts":
                      [env('REDIS_URL')],
         },
     },
