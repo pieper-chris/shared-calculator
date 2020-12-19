@@ -23,45 +23,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = removed
+import environ
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
 
-#--------------------------------------------------------------------
-# Below is a secret security key script found from:
-# https://blog.milessteele.com/posts/2013-07-07-hiding-djangos-secret-key.html
-#--------------------------------------------------------------------
-# SECRET SECURITY KEY
-import sys
-
-def find_or_create_secret_key():
-    """
-    Look for secret_key.py and return the SECRET_KEY entry in it if the file exists.
-    Otherwise, generate a new secret key, save it in secret_key.py, and return the key.
-    """
-    SECRET_KEY_DIR = os.path.dirname(__file__)
-    SECRET_KEY_FILEPATH = os.path.join(SECRET_KEY_DIR, 'secret_key.py')
-    sys.path.insert(1,SECRET_KEY_DIR)
-
-    if os.path.isfile(SECRET_KEY_FILEPATH):
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
-    else:
-        from django.utils.crypto import get_random_string
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*(-_=+)'
-        new_key = get_random_string(50, chars)
-        with open(SECRET_KEY_FILEPATH, 'w') as f:
-            f.write("# Django secret key\n# Do NOT check this into version control.\n\nSECRET_KEY = '%s'\n" % new_key)
-        from secret_key import SECRET_KEY
-        return SECRET_KEY
 
 # Make this unique, and don't share it with anybody.
-# SECRET_KEY = find_or_create_secret_key()
 SECRET_KEY = utils.get_random_secret_key()
 
 #--------------------------------------------------------------------
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,7 +107,8 @@ CHANNEL_LAYERS = {
                      # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-184-73-174-176.compute-1.amazonaws.com:16289"],
                      # old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-52-3-150-117.compute-1.amazonaws.com:25819"],
                      #old -> ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-52-7-225-92.compute-1.amazonaws.com:9829"],
-                     ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-34-205-13-64.compute-1.amazonaws.com:26309"],
+                     # ["redis://h:pbb34988bf9712a7764cad15730a7724687e175fd1e65a8957013790b4d5b70a9@ec2-34-205-13-64.compute-1.amazonaws.com:26309"],
+                     [env('REDIS_URL')],
         },
     },
 }
