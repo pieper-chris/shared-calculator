@@ -22,9 +22,10 @@ You may notice the high amount of commits - 122 of them were related to deployme
 What's New:
 ```
 -Routine internal maintenance (including Redis-server location updates). With this version, all future redis_url updates should be corrected automatically. 
--Security Patches: Addressed previous vulnerabilities using the wonderful [django-environ](https://django-environ.readthedocs.io/en/latest/).
+-Security Patches: Addressed previous vulnerabilities using the wonderful "django-environ" package.
 -Python 3.9.1 support: Upgraded from 3.8.6 to 3.9.1 for deployment and macOS Big Sur development support.
 ```
+See more on [django-environ](https://django-environ.readthedocs.io/en/latest/).
 
 New in previous version 1.2.2
 ```
