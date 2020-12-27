@@ -12,7 +12,10 @@ Please note the following:
 
 ## About
 
-This web application serves as a calculator that logs the 10 most recent calculations with anyone and everyone connected to the website. Each new calculation is logged and presented to connected users in real time using asynchronous i/o and WebSockets. Each logged calculation presents the user's name (if given), the calculation, and the global time at which the calculation took place (in [Zulu time/GMT](https://zulutime.net)) . Using the Django web framework, this application was deployed to Heroku and uses Heroku Redis to support the use of WebSockets. 
+This web application serves as a calculator that logs the 10 most recent calculations with anyone and everyone connected to the website. Each new calculation is logged and presented to connected users in real time using asynchronous i/o and WebSockets. Each logged calculation presents the user's name (if given), the calculation, and the global time at which the calculation took place (in [Zulu time/GMT](https://zulutime.net)) . Using the Django web framework, this application was deployed to Heroku and uses Heroku Redis to support the use of WebSockets.
+
+
+![Error Loading Gif](https://github.com/pieper-chris/cosmic-data/blob/master/gifs/calc.gif)
 
 ### Background
 
@@ -21,7 +24,7 @@ You may notice the high amount of commits - 122 of them were related to deployme
 ### Current Version 1.3
 What's New:
 ```
--Routine internal maintenance (including Redis-server location updates). With this version, all future redis_url updates should be corrected automatically. 
+-Routine internal maintenance (including Redis-server location updates). With this version, all future redis_url updates should be corrected automatically.
 -Security Patches: Addressed previous vulnerabilities using the wonderful "django-environ" package.
 -Python 3.9.1 support: Upgraded from 3.8.6 to 3.9.1 for deployment and macOS Big Sur development support.
 ```
@@ -45,7 +48,7 @@ New in previous version 1.2
 ### Future Work
 There exist redundant files in my file structure. This mostly appeared well after my local app (Django only) worked beautifully on my local machine; folders needed to be moved around for Heroku deployment to be built successfully. In total, the file structure and commit history can be cleaned up, as it does seem a bit messy to me. Alternate date and time formats can be used instead of Zulu time - this can be changed with other future design ideas.
 
-In the meantime, this application should be up and working well. If you have any issues with this application, please contact me [here](https://chris-pieper.bss.design/contact.html). 
+In the meantime, this application should be up and working well. If you have any issues with this application, please contact me [here](https://chris-pieper.bss.design/contact.html).
 
 
 ### Documentation
@@ -54,4 +57,3 @@ For any visitors of this page, I am still new to front-end development even afte
 - https://www.fullstackpython.com/django.html
 - https://devcenter.heroku.com/articles/deploying-python
 - https://devcenter.heroku.com/articles/getting-started-with-python
-
