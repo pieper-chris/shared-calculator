@@ -48,7 +48,7 @@ New in previous version 1.2
 ### Future Work
 There exist redundant files in my file structure. This mostly appeared well after my local app (Django only) worked beautifully on my local machine; folders needed to be moved around for Heroku deployment to be built successfully. In total, the file structure and commit history can be cleaned up, as it does seem a bit messy to me. Alternate date and time formats can be used instead of Zulu time - this can be changed with other future design ideas.
 
-In the meantime, this application should be up and working well. If you have any issues with this application, please contact me [here](https://chris-pieper.bss.design/contact.html).
+In the meantime, this application should be up and working well. If you have any issues with this application, please contact me [here](https://clpieper.com/contact.html).
 
 
 ### Documentation
