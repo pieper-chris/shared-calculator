@@ -15,7 +15,7 @@ Please note the following:
 This web application serves as a calculator that logs the 10 most recent calculations with anyone and everyone connected to the website. Each new calculation is logged and presented to connected users in real time using asynchronous i/o and WebSockets. Each logged calculation presents the user's name (if given), the calculation, and the global time at which the calculation took place (in [Zulu time/GMT](https://zulutime.net)) . Using the Django web framework, this application was deployed to Heroku and uses Heroku Redis to support the use of WebSockets.
 
 
-![Error Loading Gif](https://github.com/pieper-chris/cosmic-data/blob/master/gifs/calc.gif)
+![Error Loading Gif](https://github.com/pieper-chris/shared-calculator/blob/master/gifs/calc.gif)
 
 ### Background
 
