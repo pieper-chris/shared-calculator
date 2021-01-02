@@ -75,7 +75,6 @@
                   result += "[ " + calculator.display.value + ' = ';
                   try{
                       var new_val = eval(calculator.display.value);
-                      console.log(new_val);
                       // round decimals to nearest 4 places
                       var rounded = new_val;
                       if (new_val % 1 != 0){
@@ -87,7 +86,7 @@
                       result += " Undefined ]";
                       alert("Error: Undefined Operation. Please enter a valid mathematical operation. ", e);
                   }
-                  
+
               }
               function check(){
                   $.ajax({
@@ -102,10 +101,10 @@
                   });
               }
               $(document).ready(function(){
-              
+
               $('#updates').click(function(e){
                   e.preventDefault();
-                  
+
                   $.ajax({
                       type:'POST',
                       url:'/user/resultingcalc/',
@@ -116,7 +115,7 @@
                       dataType: 'json',
                       success:function(){
                           check();
-                          
+
                       },
                       error: function (response) {
                           console.log(response.statusText);

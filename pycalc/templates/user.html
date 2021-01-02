@@ -7,12 +7,10 @@
       wsPrefix = 'wss://'
   }
   var socket = new WebSocket(wsPrefix + window.location.host + window.location.pathname);
-  
+
   socket.onmessage = function(event) {
-      console.log("message", event);
       data = JSON.parse(event.data);
       lst = JSON.parse(data["text"]["content"]["data"]);
-      console.log("length", lst.length);
       var str="";
       for (var i = 0; i < lst.length; i++){
           str += lst[i]["fields"]["comp"] +
@@ -21,7 +19,6 @@
       document.getElementById("Feed").innerHTML = str;
   }
   socket.onopen = function(event) {
-      console.log("open", event);
       check();
   }
   socket.onerror = function(event) {
@@ -30,7 +27,7 @@
   socket.onclose = function(event) {
       console.log("close", event);
   }
-  
+
   function updateSockets(data){
       socket.send(JSON.stringify(data));
   }
