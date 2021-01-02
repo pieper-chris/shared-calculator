@@ -21,8 +21,14 @@ This web application serves as a calculator that logs the 10 most recent calcula
 
 You may notice the high amount of commits - 122 of them were related to deployment! Since I am new to integrating a Django project to Heroku, it took me a little longer to configure the settings and file structure to meet the requirements of a successful Heroku deployment. A possible solution to the frequent commits would be to perform a ```git rebase``` and ```squash``` the deployment process together. However, I am keeping all commits as they are for the full visibility of my process as you inspect my source code.
 
-### Current Version 1.3
+### Current Version 1.3.1
 What's New:
+```
+-Resolved bootstrap.min.css SourceMap Error [solution was addressed in link below]
+```
+Link: [Issue related to comment in bootstrap.min.css file](https://github.com/pkp/healthSciences/issues/117)
+
+New in previous version 1.3
 ```
 -Routine internal maintenance (including Redis-server location updates). With this version, all future redis_url updates should be corrected automatically.
 -Security Patches: Addressed previous vulnerabilities using the wonderful "django-environ" package.
